@@ -14,8 +14,9 @@
 }
 
 
-.demo-simple-select-label{
-  width: 10px;
+#demo-simple-select{
+  display: flex;
+  width: 80px;
 }
 
 .delete-btn{
