@@ -23,8 +23,11 @@
   width: 50px;
   height: 25px;
   gap: 5px;
+}
 
-
+.transaction-listItem{
+  margin-top: 5px;
+  width: 100%;
 }
 
 li{

@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
   const addTransaction = () => {
 
-    if (description && amount) {
+    if (description && amount && Number(amount) > 0) {
 
       const newTransaction: Transaction = {
         id: transactions.length ? transactions[transactions.length - 1].id + 1 : 1,
@@ -50,9 +50,9 @@ const App: React.FC = () => {
 
 
   const calculatePrihod = () => {
-      var prihodi = transactions.filter(trans => trans.category === 'Prihod');
+    var prihodi = transactions.filter(trans => trans.category === 'Prihod');
 
-      return prihodi.reduce((total, transaction) => total + transaction.amount, 0);
+    return prihodi.reduce((total, transaction) => total + transaction.amount, 0);
 
   };
 
@@ -60,7 +60,7 @@ const App: React.FC = () => {
     var troskovi = transactions.filter(trans => trans.category === 'Trosak');
 
     return troskovi.reduce((total, transaction) => total + transaction.amount, 0);
-    
+
   };
 
 
@@ -68,26 +68,6 @@ const App: React.FC = () => {
     <div className="App">
       <h1>Transaction Tracker</h1>
       <div>
-
-        {/* <input
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        /> */}
-        {/* <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        /> */}
-
-        {/* <input
-        type = "text"
-        placeholder = "Category"
-        value = {category}
-        onChange={(e) => setCategory(e.target.value)}
-        /> */}
 
         <TextField id="outlined-basic" label="Amount" variant="outlined" type="number" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
 
@@ -105,27 +85,24 @@ const App: React.FC = () => {
           </Select>
         </FormControl>
 
-
-
         <TextField id="outlined-basic" label="Description" variant="outlined" onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Description" value={description} />
 
         <Button variant="contained" onClick={addTransaction}>Add Transaction</Button>
 
-
       </div>
 
-        <div id="transactions-list">
-      <h2>Transactions</h2>
-      <ul>
-        {transactions.map((transaction) => (
-          <li key={transaction.id}>
-            ({transaction.category})  {transaction.description}: ${transaction.amount}   
+      <div id="transactions-list">
+        <h2>Transactions</h2>
+        <ul>
+          {transactions.map((transaction) => (
+            <li key={transaction.id} className="transaction-listItem">
+              ({transaction.category})  {transaction.description}: ${transaction.amount}
 
-            <Button className = "delete-btn" variant="contained" color="error" onClick={() => deleteTransaction(transaction.id)}>Delete</Button>
+              <Button className="delete-btn" variant="contained" color="error" onClick={() => deleteTransaction(transaction.id)}>Delete</Button>
 
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
 
       </div>
 
