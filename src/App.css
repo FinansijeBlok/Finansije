@@ -17,3 +17,25 @@
 .demo-simple-select-label{
   width: 10px;
 }
+
+.delete-btn{
+  width: 50px;
+  height: 25px;
+  gap: 5px;
+
+
+}
+
+li{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+.transacations-list{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+
+}
